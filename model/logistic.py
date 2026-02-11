@@ -4,7 +4,7 @@ import joblib
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     accuracy_score,
     roc_auc_score,
@@ -14,7 +14,7 @@ from sklearn.metrics import (
     matthews_corrcoef
 )
 
-print("Starting KNN training...")
+print("Starting Logistic Regression training...")
 
 # Load dataset
 data = pd.read_csv("../adult.csv")
@@ -38,18 +38,18 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
 
-# Scaling
+# Scaling (important for Logistic Regression)
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
-# Train KNN
-knn = KNeighborsClassifier(n_neighbors=5)
-knn.fit(X_train, y_train)
+# Train Logistic Regression
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
 
 # Predictions
-y_pred = knn.predict(X_test)
-y_prob = knn.predict_proba(X_test)[:, 1]
+y_pred = model.predict(X_test)
+y_prob = model.predict_proba(X_test)[:, 1]
 
 # Metrics
 accuracy = accuracy_score(y_test, y_pred)
@@ -59,7 +59,7 @@ recall = recall_score(y_test, y_pred)
 f1 = f1_score(y_test, y_pred)
 mcc = matthews_corrcoef(y_test, y_pred)
 
-print("\nKNN Evaluation Metrics:")
+print("\nLogistic Regression Evaluation Metrics:")
 print("Accuracy:", accuracy)
 print("AUC:", auc)
 print("Precision:", precision)
@@ -68,7 +68,7 @@ print("F1 Score:", f1)
 print("MCC:", mcc)
 
 # Save model and scaler
-joblib.dump(knn, "../model/knn_model.pkl")
-joblib.dump(scaler, "../model/scaler.pkl")
+joblib.dump(model, "logistic_model.pkl")
+joblib.dump(scaler, "logistic_scaler.pkl")
 
-print("\nKNN model trained and saved successfully.")
+print("\nLogistic Regression model trained and saved successfully.")
