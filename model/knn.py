@@ -33,6 +33,10 @@ data = pd.get_dummies(data, drop_first=True)
 X = data.drop("income", axis=1)
 y = data["income"]
 
+print("Feature size:", X.shape[1])
+print("Number of instances:", X.shape[0])
+
+
 # Train-test split
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
