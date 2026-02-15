@@ -33,8 +33,7 @@ data = pd.get_dummies(data, drop_first=True)
 X = data.drop("income", axis=1)
 y = data["income"]
 
-print("Feature size:", X.shape[1])
-print("Number of instances:", X.shape[0])
+joblib.dump(X.columns, "feature_columns.pkl")
 
 
 # Train-test split
