@@ -15,6 +15,28 @@ from sklearn.metrics import (
 
 st.title("ML Assignment 2 - Classification Models")
 
+# Load full dataset for test data download
+full_data = pd.read_csv("adult.csv")
+full_data = full_data.replace("?", np.nan)
+full_data = full_data.dropna()
+
+# Create test split (same logic as training)
+from sklearn.model_selection import train_test_split
+
+train_data, test_data = train_test_split(
+    full_data,
+    test_size=0.2,
+    random_state=42
+)
+
+st.download_button(
+    label="Download Test Data",
+    data=test_data.to_csv(index=False),
+    file_name="test_data.csv",
+    mime="text/csv"
+)
+
+
 st.write("Upload a CSV file with the same structure as the training dataset.")
 
 # Model selection
@@ -37,6 +59,11 @@ if uploaded_file is not None:
 
     X = data.drop("income", axis=1)
     y = data["income"]
+
+    # Ensure same feature structure as training
+    trained_columns = joblib.load("model/feature_columns.pkl")
+    X = X.reindex(columns=trained_columns, fill_value=0)
+
 
     # Load selected model
     if model_option == "KNN":
