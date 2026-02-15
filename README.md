@@ -4,6 +4,9 @@ Machine Learning Assignment 2 - BITS WILP
 ## Live Streamlit App
 [Click here to access the deployed app](https://mlassignment2-gkpodq6anc2k9cwr3mscdp.streamlit.app/)
 
+a. Problem Statement
+
+The objective of this assignment is to build and compare multiple classification models for predicting whether an individual's income exceeds $50K per year based on demographic and employment-related attributes. The task involves model implementation, evaluation using multiple performance metrics, and deployment through an interactive Streamlit web application.
 ---
 
 ## Dataset Details
@@ -55,25 +58,6 @@ These metrics were chosen to provide a comprehensive evaluation considering clas
 
 ---
 
-## Best Performing Model
-
-XGBoost achieved the highest overall performance across:
-- Accuracy
-- AUC
-- F1 Score
-- MCC
-
----
-
-## Deployment
-
-The models are integrated into an interactive Streamlit web application that allows:
-- Model selection
-- CSV file upload
-- Real-time prediction
-- Evaluation metric display
-- Confusion matrix visualization
-
 ## Model Performance Comparison
 
 | Model               | Accuracy | AUC   | Precision | Recall | F1 Score | MCC   |
@@ -84,3 +68,16 @@ The models are integrated into an interactive Streamlit web application that all
 | Naive Bayes        | 0.7824   | 0.8223| 0.6406    | 0.2840 | 0.3935   | 0.3192|
 | Random Forest      | 0.8417   | 0.8964| 0.7144    | 0.6053 | 0.6554   | 0.5567|
 | XGBoost            | 0.8654   | 0.9237| 0.7788    | 0.6407 | 0.7030   | 0.6220|
+
+
+## Best Performing Model
+
+XGBoost achieved the highest overall performance across:
+- Accuracy
+- AUC
+- F1 Score
+- MCC
+
+---
+
+
