@@ -79,5 +79,15 @@ XGBoost achieved the highest overall performance across:
 - MCC
 
 ---
+## Observations on Model Performance 
+
+| ML Model Name | Observation about model performance |
+|---------------|--------------------------------------|
+| Logistic Regression | Performed well with high AUC and balanced precision-recall tradeoff. Good generalization with moderate MCC score. |
+| Decision Tree | Lower AUC compared to ensemble models. Slight tendency to overfit, but recall was relatively strong. |
+| K-Nearest Neighbors (KNN) | Moderate performance. Sensitive to feature scaling and high dimensionality due to one-hot encoding. |
+| Naive Bayes | Lowest recall and F1 score. Independence assumption between features likely reduced effectiveness. |
+| Random Forest (Ensemble) | Strong and stable performance. Improved generalization compared to single Decision Tree. |
+| XGBoost (Ensemble) | Best overall model. Achieved highest Accuracy, AUC, F1 Score, and MCC on the dataset. |
 
 
